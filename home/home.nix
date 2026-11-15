@@ -9,6 +9,12 @@
     fd
   ];
 
+  xdg.userDirs = {
+    enable = true;
+    createDirectories = true;
+    setSessionVariables = false;
+  };
+
   home.file = {
     ".local/share/wallpapers".source = ../resources/wallpapers;
 
