@@ -20,13 +20,9 @@
 
         # Work
         pkgs.slack
-        # pkgs.whatsapp-for-linux  # Removed in 26.05 (unmaintained); nixpkgs suggests pkgs.karere.
         pkgs.bitwarden-desktop
-        # pkgs-unstable.mathematica
         pkgs.libreoffice
         pkgs.thunderbird
-        pkgs.calibre
-        pkgs.onedrive
 
         # Recreational
         pkgs.discord
@@ -36,8 +32,8 @@
 
         # Development
         pkgs.jetbrains.clion
-        pkgs.zeal
         pkgs.gcc13
+		pkgs.zeal
         pkgs.cmake
         pkgs.gnumake
         pkgs.ninja
