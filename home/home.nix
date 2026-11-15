@@ -67,6 +67,23 @@
     git = true;
   };
 
+  programs.tmux = {
+    enable = true;
+    mouse = true;
+    baseIndex = 1;
+  };
+
+  # Loads a project's dev shell on cd: put `use flake` in its .envrc, then `direnv allow`.
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
+
+  programs.git = {
+    enable = true;
+    lfs.enable = true;
+  };
+
   programs.neovim = {
     enable = true;
     defaultEditor = true;
