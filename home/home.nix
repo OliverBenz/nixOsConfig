@@ -7,7 +7,6 @@
   home.packages = with pkgs; [
     ripgrep
     fd
-    zed-editor
   ];
 
   home.file = {
@@ -41,6 +40,14 @@
       clang-tools # clangd
       texlab
     ];
+  };
+
+  # Merged into Zed's writable settings on each switch; values here win.
+  programs.zed-editor = {
+    enable = true;
+    extensions = [ "catppuccin" "html" "latex" "neocmake" "nix" "powershell" ];
+    userSettings = builtins.fromJSON (builtins.readFile dotfiles/zed/settings.json);
+    userDebug = builtins.fromJSON (builtins.readFile dotfiles/zed/debug.json);
   };
 
   programs.ssh = {

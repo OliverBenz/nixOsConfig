@@ -1,0 +1,102 @@
+{
+  "format_on_save": "on",
+  "show_whitespaces": "none",
+  "indent_guides": {
+    "coloring": "fixed",
+    "enabled": true,
+    "line_width": 1
+  },
+  "vim": {
+    "toggle_relative_line_numbers": false
+  },
+  "toolbar": {
+    "breadcrumbs": true
+  },
+  "minimap": {
+    "show": "never"
+  },
+  "gutter": {
+    "line_numbers": true
+  },
+  "cursor_shape": "bar",
+  "cursor_blink": true,
+  "agent_ui_font_size": 16.0,
+  "buffer_line_height": "comfortable",
+  "buffer_font_weight": 400.0,
+  "buffer_font_family": ".ZedMono",
+  "icon_theme": "Zed (Default)",
+  "agent": {
+    "default_profile": "ask",
+    "default_model": {
+      "provider": "ollama",
+      "model": "qwen3.6-35b-64k:latest",
+      "enable_thinking": true
+    },
+    "favorite_models": [],
+    "model_parameters": []
+  },
+  "edit_predictions": {
+    "allow_data_collection": "no",
+    "ollama": {
+      "model": "qwen3:8b"
+    },
+    "codestral": {
+      "api_url": "https://codestral.mistral.ai"
+    },
+    "provider": "ollama"
+  },
+  "hard_tabs": true,
+  "soft_wrap": "editor_width",
+  "cli_default_open_behavior": "new_window",
+  "relative_line_numbers": "enabled",
+  "languages": {
+    "CMake": {
+      "preferred_line_length": 240
+    },
+    "C": {
+      "format_on_save": "on",
+      "formatter": "language_server",
+      "hard_tabs": true
+    },
+    "C++": {
+      "format_on_save": "on",
+      "formatter": "language_server",
+      "hard_tabs": true
+    }
+  },
+  "disable_ai": false,
+  "telemetry": {
+    "diagnostics": true,
+    "metrics": false
+  },
+  "session": {
+    "trust_all_worktrees": true
+  },
+  "vim_mode": true,
+  "agent_servers": {
+    "claude-acp": {
+      "default_config_options": {
+        "effort": "medium",
+        "fast": false,
+        "model": "opus"
+      },
+      "type": "registry"
+    }
+  },
+  "ui_font_size": 16,
+  "buffer_font_size": 14.0,
+  "theme": {
+    "mode": "dark",
+    "light": "One Light",
+    "dark": "Catppuccin Mocha - No Italics"
+  },
+  "theme_overrides": {
+    "Catppuccin Mocha - No Italics": {
+      "version_control.added": "#89b4fa",
+      "version_control.word_added": "#89b4fa59",
+      "created": "#89b4fa",
+      "created.border": "#89b4fa",
+      "created.background": "#89b4fa26"
+    }
+  }
+}
