@@ -5,8 +5,12 @@
 #   nordvpn set autoconnect on
 #   nordvpn set killswitch on
 { inputs, pkgs-unstable, ... }:
+let
+  module = import "${inputs.nixpkgs-unstable}/nixos/modules/services/networking/nordvpn.nix";
+in
 {
-  imports = [ "${inputs.nixpkgs-unstable}/nixos/modules/services/networking/nordvpn.nix" ];
+  # Without its meta: the module's manual page is unknown to the stable manual and fails its build.
+  imports = [ ({ config, lib, pkgs, ... }@args: removeAttrs (module args) [ "meta" ]) ];
 
   services.nordvpn = {
     enable = true;
