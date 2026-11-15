@@ -16,5 +16,5 @@ Short overview to some commands I will for sure forget at some point:
 
 The available profiles names that replace `#nameOfProfile` can be seen in the flakes.nix.
 Should be:
-- oliverPC
+- oliverPc
 - oliverLpt

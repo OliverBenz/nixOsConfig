@@ -37,7 +37,7 @@
           ];
         };
 
-        oliverPC = lib.nixosSystem {
+        oliverPc = lib.nixosSystem {
           inherit system;
           specialArgs = {
             inherit inputs;
