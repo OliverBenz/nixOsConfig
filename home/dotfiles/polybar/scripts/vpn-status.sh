@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 status=$(nordvpn status | grep 'Status:' | awk '{print $2}')
 if [[ "$status" == "Connected" ]]; then

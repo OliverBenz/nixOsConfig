@@ -118,6 +118,7 @@ bindsym $mod+f fullscreen toggle
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
+bindsym $mod+Shift+w exec --no-startup-id nitrogen ~/.local/share/wallpapers
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
@@ -284,8 +285,7 @@ bindsym $mod+shift+x exec /home/$USER/.config/scripts/lock
 
 # Autostart applications
 exec --no-startup-id /run/current-system/sw/libexec/polkit-gnome-authentication-agent-1
-# Wallpapers come from resources/wallpapers in nixOsConfig, placed by home-manager.
-exec --no-startup-id nitrogen --set-zoom-fill ~/.local/share/wallpapers/fuji_light.jpg; sleep 1; picom -b
+exec --no-startup-id nitrogen --restore; sleep 1; picom -b
 #exec --no-startup-id manjaro-hello
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
