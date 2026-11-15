@@ -46,7 +46,7 @@
     # ".screenrc".source = dotfiles/screenrc;
 
     # Vim
-    ".i3/config".source = dotfiles/i3Config;
+    ".config/i3/config".source = dotfiles/i3Config;
     ".config/polybar/config.ini".source = dotfiles/polybar/config.ini;
     ".config/polybar/scripts/vpn-status.sh".source = dotfiles/polybar/scripts/vpn-status.sh;
     ".config/polybar/scripts/net-conn.sh".source = dotfiles/polybar/scripts/net-conn.sh;
