@@ -5,7 +5,7 @@
     oliver = {
       isNormalUser = true;
       description = "Oliver Benz";
-      extraGroups = [ "networkmanager" "wheel" ];
+      extraGroups = [ "networkmanager" "wheel" "video" ];
       packages = [
         # Essential
         pkgs.home-manager
@@ -36,7 +36,6 @@
 
         # Development
         pkgs.jetbrains.clion
-        pkgs.vscode
         pkgs.zeal
         pkgs.gcc13
         pkgs.cmake

@@ -59,12 +59,11 @@ bindsym $mod+Ctrl+m exec kitty -e alsamixer
 # Start Applications
 # NixOS: bmenu is Manjaro-only.
 # bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
-bindsym $mod+F2 exec palemoon
+bindsym $mod+F2 exec brave
 bindsym $mod+F3 exec pcmanfm
 # bindsym $mod+F3 exec ranger
 # NixOS: pcmanfm_pkexec is Manjaro-only.
 # bindsym $mod+Shift+F3 exec pcmanfm_pkexec
-bindsym $mod+F5 exec kitty -e mocp
 bindsym $mod+t exec --no-startup-id pkill picom
 bindsym $mod+Ctrl+t exec --no-startup-id picom -b
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
@@ -281,7 +280,7 @@ mode "resize" {
 # bindsym $mod+shift+x exec i3lock
 # For a blurred lock, use 
 # bindsym $mod+shift+x exec --no-startup-id blurlock
-bindsym $mod+shift+x exec /home/$USER/.config/scripts/lock
+bindsym $mod+shift+x exec --no-startup-id i3lock -c 000000
 
 # Autostart applications
 exec --no-startup-id /run/current-system/sw/libexec/polkit-gnome-authentication-agent-1
@@ -323,12 +322,12 @@ exec --no-startup-id xfce4-power-manager
 # set_from_resource $col_indicator     indicator
 
 set $col_background      #523d6499
-set $col_background-in   #3636364D
-set $col_background-ur   #ff0000
+set $col_background_in   #3636364D
+set $col_background_ur   #ff0000
 set $col_bar             #523d640D
 set $col_focus_ws        #523d6480
 set $col_text            #ffffff
-set $col_text-in         #969696
+set $col_text_in         #969696
 set $col_indicator       #a8a3c1
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
@@ -364,9 +363,6 @@ set $col_indicator       #a8a3c1
 # }
 
 exec_always --no-startup-id sh -c 'pkill -x polybar; while pgrep -x polybar >/dev/null; do sleep 0.1; done; polybar oliBar &'
-
-# hide/unhide i3status bar
-bindsym $mod+m bar mode toggle
 
 # Theme colors
 # class                   border           backgr. text       indic.       child_border
@@ -442,9 +438,9 @@ focus_follows_mouse no
 
 ## Multimedia
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle # mute sound
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play-pause
@@ -460,16 +456,12 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightne
 # Note: You can get the application class name by using the 'xprop' command and clicking on the window
 # Syntax: assign [class="APP_CLASS_NAME"] WORKSPACE_NAME
 exec spotify
-assign [class="Spotify"] $ws8
+for_window [class="Spotify"] move to workspace $ws8
 
-exec code /home/oliver/Documents/LaTex/
-assign [class="code-oss"] $ws2
+exec zeditor
+assign [class="dev.zed.Zed"] $ws2
 
 assign [class="Zotero"] $ws3
-
-# NixOS: whatsdesk is not in nixpkgs.
-# exec whatsdesk
-assign [class="whatsdesk"] $ws7
 
 # exec thunderbird
 assign [class="thunderbird"] $ws7
@@ -480,9 +472,11 @@ assign [class="discord"] $ws6
 # exec steam
 assign [class="steam"] $ws6
 
+# Autostarted apps open on their own workspaces; start on 1.
+exec --no-startup-id i3-msg workspace $ws1
 
-#
-## Laptop Configuration
+
+## Monitors: outputs that don't exist on a machine are ignored (PC: single DP-0).
 # exec_always xrandr --output eDP-1 --primary --mode 2256x1504 --rotate normal --output DP-4 --mode 2560x1440 --left-of eDP-1 
 # exec --no-startup-id nitrogen --set-auto /home/oliver/Data/OneDrivePersonal/Pictures/Backgrounds/linux/wallpaper-mountain.jpg --head=0
 
@@ -498,8 +492,6 @@ workspace $ws8 output DP-4
 
 
 
-## PC Configuration
-exec_always xrandr --output HDMI-0 --off --output DP-0 --mode 3440x1440 --rate 100 --pos 0x0 --rotate normal 
 # NixOS: replaced by the nitrogen line next to picom, which works on every machine.
 # exec --no-startup-id nitrogen --set-auto /home/oliver/Pictures/Wallpapers/personal/fuji_light.png --head=0
 

@@ -7,6 +7,7 @@
   home.packages = with pkgs; [
     ripgrep
     fd
+    zed-editor
   ];
 
   home.file = {
@@ -16,7 +17,6 @@
     ".config/i3/config".source = dotfiles/i3Config;
     ".config/polybar/config.ini".source = dotfiles/polybar/config.ini;
     ".config/polybar/scripts/vpn-status.sh".source = dotfiles/polybar/scripts/vpn-status.sh;
-    ".config/polybar/scripts/net-conn.sh".source = dotfiles/polybar/scripts/net-conn.sh;
     ".config/picom.conf".source = dotfiles/picom;
 
     # Vim
@@ -32,6 +32,8 @@
   programs.neovim = {
     enable = true;
     defaultEditor = true;
+    withPython3 = false;
+    withRuby = false;
     initLua = builtins.readFile dotfiles/nvim/init.lua;
     # Only on nvim's PATH, so they never shadow a project's toolchain.
     extraPackages = with pkgs; [

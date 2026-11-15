@@ -70,7 +70,6 @@ shadow-opacity = 0.75;
 # This list includes all the affected apps I found in my testing. The "! name~=''" part excludes shadows on any "Unknown" windows, this prevents a visual glitch with the XFWM alt tab switcher.
 shadow-exclude = [
     "! name~=''",
-    "name = 'xfce4-notifyd'",
     "name *= 'picom'",
     "class_g ?= 'i3-frame'",
     "_GTK_FRAME_EXTENTS@",
@@ -91,28 +90,6 @@ active-opacity = 1;
 frame-opacity = 1;
 inactive-opacity-override = false;
 
-opacity-rule = [
-    "95:class_g = 'URxvt' && focused",
-    "90:class_g = 'URxvt' && !focused"
-];
-
-
-#################################
-#
-# Blurring
-#
-#################################
-
-blur-method = "kernel";
-
-# Blur convolution kernel
-blur-kern = "15,15,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,";
-
-blur-background-exclude = [
-    # "window_type = 'dock'",
-    # "window_type = 'desktop'"
-    "class_g = 'i3-frame'"
-];
 
 
 #################################

@@ -23,7 +23,6 @@
     networkmanagerapplet      # nm-applet
     volumeicon alsa-utils pulseaudio  # tray volume, alsamixer, pactl
     playerctl                 # media keys
-    acpilight                 # xbacklight for brightness keys
     xfce4-power-manager
     polkit_gnome              # authentication agent
     pcmanfm                   # file manager
@@ -31,6 +30,9 @@
     i3lock                    # lock screen
     xkill xrandr
   ];
+
+  # xbacklight for the brightness keys, with udev rules so the video group may write the backlight.
+  hardware.acpilight.enable = true;
 
   # polkit-gnome installs its agent to libexec, which NixOS doesn't link into the system path by default.
   environment.pathsToLink = [ "/libexec" ];
