@@ -7,5 +7,6 @@
     ./desktop.nix
     ./users.nix
     ./ssh.nix
+    ./vpn.nix
   ];
 }
