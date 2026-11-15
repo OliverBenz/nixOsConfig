@@ -34,6 +34,13 @@
   # xbacklight for the brightness keys, with udev rules so the video group may write the backlight.
   hardware.acpilight.enable = true;
 
+  # Monitor hotplug: an unknown screen (e.g. a projector) gets mirrored at the best common resolution.
+  services.autorandr = {
+    enable = true;
+    defaultTarget = "common";
+    hooks.postswitch.wallpaper = "${pkgs.nitrogen}/bin/nitrogen --restore";
+  };
+
   # polkit-gnome installs its agent to libexec, which NixOS doesn't link into the system path by default.
   environment.pathsToLink = [ "/libexec" ];
 

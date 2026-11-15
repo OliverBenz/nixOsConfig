@@ -476,18 +476,6 @@ assign [class="steam"] $ws6
 exec --no-startup-id i3-msg workspace $ws1
 
 
-## Monitors: outputs that don't exist on a machine are ignored (PC: single DP-0).
-# exec_always xrandr --output eDP-1 --primary --mode 2256x1504 --rotate normal --output DP-4 --mode 2560x1440 --left-of eDP-1 
-# exec --no-startup-id nitrogen --set-auto /home/oliver/Data/OneDrivePersonal/Pictures/Backgrounds/linux/wallpaper-mountain.jpg --head=0
-
-workspace $ws1 output eDP-1
-workspace $ws2 output eDP-1
-workspace $ws3 output eDP-1
-workspace $ws4 output eDP-1
-workspace $ws5 output DP-4
-workspace $ws6 output DP-4
-workspace $ws7 output DP-4
-workspace $ws8 output DP-4
 
 
 
