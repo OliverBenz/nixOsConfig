@@ -54,7 +54,7 @@
       homeConfigurations = {
         oliver = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          extraSpecialArgs = { inherit inputs; };
+          extraSpecialArgs = { inherit inputs pkgs-unstable; };
           modules = [ ./home ];
         };
       };

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, pkgs-unstable, ... }:
 {
   home.username = "oliver";
   home.homeDirectory = "/home/oliver";
@@ -54,6 +54,27 @@
     extensions = [ "catppuccin" "html" "latex" "neocmake" "nix" "powershell" ];
     userSettings = builtins.fromJSON (builtins.readFile dotfiles/zed/settings.json);
     userDebug = builtins.fromJSON (builtins.readFile dotfiles/zed/debug.json);
+  };
+
+  # Models run on the PC's Ollama, reached through Caddy (see README).
+  programs.opencode = {
+    enable = true;
+    package = pkgs-unstable.opencode; # stable lags far behind
+    settings = {
+      model = "ollama/qwen3.6-35b-64k";
+      provider.ollama = {
+        npm = "@ai-sdk/openai-compatible";
+        name = "Ollama (PC)";
+        options.baseURL = "https://ollama.home/v1";
+        models = lib.genAttrs [
+          "qwen3-coder-30b-32k"
+          "qwen3-coder-30b-48k"
+          "qwen3-8b-32k"
+          "qwen3.6-35b-64k"
+          "qwen3.6-35b-256k"
+        ] (name: { inherit name; });
+      };
+    };
   };
 
   programs.ssh = {
