@@ -97,6 +97,20 @@
     EDITOR = "vim";
   };
 
+  # SSH client config (~/.ssh/config). Keys stay unmanaged in ~/.ssh.
+  programs.ssh = {
+    enable = true;
+    enableDefaultConfig = false;
+    settings = {
+      "*".AddKeysToAgent = "yes";
+      "gitea.home" = {
+        Port = 222;
+        User = "git";
+      };
+    };
+  };
+  services.ssh-agent.enable = true;
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
