@@ -284,7 +284,8 @@ bindsym $mod+shift+x exec /home/$USER/.config/scripts/lock
 
 # Autostart applications
 exec --no-startup-id /run/current-system/sw/libexec/polkit-gnome-authentication-agent-1
-exec --no-startup-id nitrogen --restore; sleep 1; picom -b
+# Wallpapers come from resources/wallpapers in nixOsConfig, placed by home-manager.
+exec --no-startup-id nitrogen --set-zoom-fill ~/.local/share/wallpapers/fuji_light.jpg; sleep 1; picom -b
 #exec --no-startup-id manjaro-hello
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
@@ -499,7 +500,8 @@ workspace $ws8 output DP-4
 
 ## PC Configuration
 exec_always xrandr --output HDMI-0 --off --output DP-0 --mode 3440x1440 --rate 100 --pos 0x0 --rotate normal 
-exec --no-startup-id nitrogen --set-auto /home/oliver/Pictures/Wallpapers/personal/fuji_light.png --head=0
+# NixOS: replaced by the nitrogen line next to picom, which works on every machine.
+# exec --no-startup-id nitrogen --set-auto /home/oliver/Pictures/Wallpapers/personal/fuji_light.png --head=0
 
 # Notes
 # - xrandr settings can be checked using 'arandr' program and saving the current layout.
