@@ -35,6 +35,38 @@
     ".config/onedrive-launcher".source = dotfiles/onedrive-launcher;
   };
 
+  # Terminal: kitty draws the window, bash runs inside, starship draws the prompt.
+  programs.kitty = {
+    enable = true;
+    themeFile = "Catppuccin-Mocha";
+    font = {
+      name = "JetBrainsMono Nerd Font";
+      size = 10;
+    };
+    settings = {
+      background_opacity = "0.9";
+      window_padding_width = 4;
+      enable_audio_bell = false;
+      confirm_os_window_close = 0;
+    };
+  };
+
+  programs.bash = {
+    enable = true;
+    historySize = 10000;
+    historyControl = [ "ignoredups" "erasedups" ];
+    shellAliases.grep = "grep --color=auto";
+  };
+
+  programs.starship.enable = true;
+
+  # ls with icons and git status.
+  programs.eza = {
+    enable = true;
+    icons = "auto";
+    git = true;
+  };
+
   programs.neovim = {
     enable = true;
     defaultEditor = true;
