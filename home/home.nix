@@ -103,6 +103,11 @@
     enableDefaultConfig = false;
     settings = {
       "*".AddKeysToAgent = "yes";
+      "github.com" = {
+        User = "git";
+        IdentityFile = "~/.ssh/github";
+        IdentitiesOnly = "yes";
+      };
       "gitea.home" = {
         Port = 222;
         User = "git";
