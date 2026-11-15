@@ -7,6 +7,7 @@
   home.packages = with pkgs; [
     ripgrep
     fd
+    protonmail-desktop
   ];
 
   xdg.userDirs = {

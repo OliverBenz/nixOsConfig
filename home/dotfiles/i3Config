@@ -463,6 +463,9 @@ assign [class="dev.zed.Zed"] $ws2
 
 assign [class="Zotero"] $ws3
 
+exec proton-mail
+for_window [class="(?i)proton"] move to workspace $ws7
+
 # exec thunderbird
 assign [class="thunderbird"] $ws7
 
