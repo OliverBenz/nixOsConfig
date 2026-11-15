@@ -15,7 +15,7 @@
     gparted
     unzip
     powertop
-    libsForQt5.kcalc
+    kdePackages.kcalc
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

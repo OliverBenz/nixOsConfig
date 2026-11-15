@@ -11,17 +11,17 @@
         pkgs.home-manager
         pkgs.brave
         pkgs.firefox
-        pkgs.kate
+        pkgs.kdePackages.kate
         pkgs.mpv
         pkgs.gthumb
         pkgs.flameshot
-        pkgs.libsForQt5.okular
+        pkgs.kdePackages.okular
         pkgs.krita
 
         # Work
         pkgs.slack
-        pkgs.whatsapp-for-linux
-        pkgs.bitwarden
+        # pkgs.whatsapp-for-linux  # Removed in 26.05 (unmaintained); nixpkgs suggests pkgs.karere.
+        pkgs.bitwarden-desktop
         # pkgs-unstable.mathematica
         pkgs.libreoffice
         pkgs.thunderbird
@@ -37,12 +37,11 @@
         # Development
         pkgs.jetbrains.clion
         pkgs.vscode
-        pkgs.zeal-qt6
+        pkgs.zeal
         pkgs.gcc13
         pkgs.cmake
         pkgs.gnumake
         pkgs.ninja
-        pkgs.qt6.full
         pkgs.qt6.qtbase
         pkgs.qtcreator
         pkgs.sqlite
