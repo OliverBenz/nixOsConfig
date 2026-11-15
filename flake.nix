@@ -44,16 +44,7 @@
             inherit pkgs-unstable;
           };
           modules = [
-            ./hosts/computerIbk
-            ./system
-          ];
-        };
-
-        oliverPCH = lib.nixosSystem {
-          inherit system;
-          specialArgs = { inherit pkgs-unstable; };
-          modules = [
-            ./hosts/computerVlb
+            ./hosts/pc
             ./system
           ];
         };
