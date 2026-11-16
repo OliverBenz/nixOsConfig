@@ -1,0 +1,15 @@
+services:
+  pihole:
+    image: pihole/pihole:2026.04.1
+    container_name: pihole
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      - TZ=Europe/Vienna
+      - FTLCONF_webserver_api_password=${WEB_PASSWORD}
+      - FTLCONF_webserver_port=8053
+      - PIHOLE_DNS_1=1.1.1.1
+      - PIHOLE_DNS_2=8.8.8.8
+    volumes:
+      - /mnt/host/Pihole/config:/etc/pihole
+      - /mnt/host/Pihole/dnsmasq:/etc/dnsmasq.d

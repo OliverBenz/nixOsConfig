@@ -1,0 +1,37 @@
+services:
+  nextcloud:
+    image: nextcloud:33.0.1
+    container_name: nextcloud
+    restart: unless-stopped
+    networks:
+      - nextcloud-net
+    ports:
+      - "8080:80"
+    volumes:
+      - /mnt/host/NextCloud/html:/var/www/html
+      - /mnt/DataDrive/NextCloud/data:/var/www/html/data
+    environment:
+      - MYSQL_HOST=db
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - NEXTCLOUD_TRUSTED_DOMAINS=localhost 192.168.178.131 100.77.252.42
+    depends_on:
+      - db
+
+  db:
+    image: mariadb:11
+    container_name: nextcloud-db
+    restart: unless-stopped
+    networks:
+      - nextcloud-net
+    volumes:
+      - /mnt/host/NextCloud/db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+
+networks:
+  nextcloud-net:

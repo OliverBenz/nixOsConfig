@@ -1,0 +1,29 @@
+jellyfin.home {
+    tls internal
+    reverse_proxy localhost:8096
+}
+
+nextcloud.home {
+    tls internal
+    reverse_proxy localhost:8080
+}
+
+gitea.home {
+    tls internal
+    reverse_proxy localhost:3000
+}
+
+pihole.home {
+    tls internal
+    reverse_proxy localhost:8053
+}
+
+minecraft.home {
+    tls internal
+    reverse_proxy localhost:25565
+}
+
+ollama.home {
+	tls internal
+	reverse_proxy localhost:11434
+}

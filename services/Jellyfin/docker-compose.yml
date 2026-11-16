@@ -1,0 +1,39 @@
+services:
+  jellyfin:
+    image: jellyfin/jellyfin:12.1
+    container_name: jellyfin
+    user: "1000:1000"
+    group_add:
+      - '989'
+    ports:
+      - "8096:8096"
+    environment:
+      - TZ=Europe/Vienna
+    volumes:
+      - /mnt/host/Jellyfin/config:/config
+      - /mnt/host/Jellyfin/cache:/cache
+        #- /mnt/DataDrive/Jellyfin/media:/media
+      - type: bind
+        source: /mnt/DataDrive/Jellyfin/media/movies
+        target: /media/movies
+      - type: bind
+        source: /mnt/DataDrive/Jellyfin/media/shows
+        target: /media/shows
+      - type: bind
+        source: /mnt/DataDrive/Jellyfin/media/music
+        target: /media/music
+      - type: bind
+        source: /mnt/DataDrive/NextCloud/data/Oliver/files/Photos
+        target: /media/photos
+    runtime: nvidia
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    restart: 'unless-stopped'
+    # Optional - may be necessary for docker healthcheck to pass if running in host network mode
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'

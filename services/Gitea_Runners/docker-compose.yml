@@ -1,0 +1,18 @@
+services:
+  gitea-runner:
+    image: gitea/act_runner:latest
+    container_name: gitea-runner
+    restart: unless-stopped
+    environment:
+      CONFIG_FILE: /config.yaml
+      GITEA_INSTANCE_URL: "https://gitea.home/"
+      GITEA_RUNNER_REGISTRATION_TOKEN: ${GITEA_RUNNER_REGISTRATION_TOKEN}
+      GITEA_RUNNER_NAME: "oliverPc-runner"
+      GITEA_RUNNER_LABELS: "ubuntu-latest:docker://docker.gitea.com/runner-images:ubuntu-latest,ubuntu-22.04:docker://docker.gitea.com/runner-images:ubuntu-22.04"
+    extra_hosts:
+      - "gitea.home:host-gateway"
+    volumes:
+      - ./data:/data
+      - ./config.yaml:/config.yaml
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /mnt/host/Caddy/caddy-root.crt:/etc/ssl/certs/caddy-root.crt:ro

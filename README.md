@@ -49,6 +49,10 @@ sudo nixos-rebuild build-vm --flake .#<host>  # try a config in a VM
 own CA (`tls internal`). Its root cert is in `resources/caddy-root.crt` and trusted system-wide.
 It expires in 2036; then copy the new `/mnt/host/Caddy/caddy-root.crt` into `resources/`.
 
+Docker stacks live in `services/<stack>/`: config here, data on `/mnt/host` and `/mnt/DataDrive`.
+Each `.env` is a symlink to the secret file on `/mnt/host`, never put the file itself here.
+Apply a change: `cd services/<stack> && docker compose up -d`.
+
 opencode uses the PC's Ollama via `https://ollama.home/v1`. New models: add them to `programs.opencode` in `home/home.nix`.
 
 ## Mathematica (currently disabled)
