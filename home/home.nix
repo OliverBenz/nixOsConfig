@@ -8,6 +8,7 @@
     ripgrep
     fd
     protonmail-desktop
+    papirus-icon-theme # app icons in rofi
   ];
 
   xdg.userDirs = {
@@ -24,6 +25,7 @@
     ".config/polybar/config.ini".source = dotfiles/polybar/config.ini;
     ".config/polybar/scripts/vpn-status.sh".source = dotfiles/polybar/scripts/vpn-status.sh;
     ".config/picom.conf".source = dotfiles/picom;
+    ".config/rofi/config.rasi".source = dotfiles/rofi/config.rasi;
 
     # Vim
     ".vim/autoload/plug.vim".source = dotfiles/plug.vim;
@@ -125,6 +127,11 @@
         ] (name: { inherit name; });
       };
     };
+  };
+
+  programs.claude-code = {
+    enable = true;
+    package = pkgs-unstable.claude-code; # unfree; stable lags far behind
   };
 
   programs.ssh = {

@@ -1,0 +1,139 @@
+/* Rofi launcher (Win+D), Catppuccin Mocha to match kitty and Zed. */
+
+configuration {
+  modi: "drun,run,window";
+  show-icons: true;
+  icon-theme: "Papirus-Dark";
+  drun-display-format: "{name}";
+  display-drun: "Apps";
+  display-run: "Run";
+  display-window: "Windows";
+  matching: "fuzzy";
+  sort: true;
+  sorting-method: "fzf";
+  hover-select: true;
+  me-select-entry: "";
+  me-accept-entry: "MousePrimary";
+}
+
+* {
+  base:     #1e1e2ef2;  /* slight transparency, picom blends it */
+  mantle:   #181825;
+  surface0: #313244;
+  surface1: #45475a;
+  overlay0: #6c7086;
+  text:     #cdd6f4;
+  subtext:  #a6adc8;
+  accent:   #cba6f7;  /* mauve */
+
+  font: "JetBrainsMono Nerd Font 11";
+  background-color: transparent;
+  text-color: @text;
+  margin: 0;
+  padding: 0;
+  spacing: 0;
+}
+
+window {
+  location: center;
+  width: 560px;
+  border: 2px;
+  border-color: @accent;
+  border-radius: 14px;
+  background-color: @base;
+}
+
+mainbox {
+  padding: 14px;
+  spacing: 12px;
+  children: [ inputbar, listview, mode-switcher ];
+}
+
+inputbar {
+  padding: 10px 14px;
+  spacing: 12px;
+  border-radius: 10px;
+  background-color: @surface0;
+  text-color: @text;
+  children: [ prompt, entry ];
+}
+
+prompt {
+  text-color: @accent;
+}
+
+entry {
+  placeholder: "Search apps…";
+  placeholder-color: @subtext;
+  text-color: @text;
+  cursor: text;
+}
+
+listview {
+  lines: 8;
+  columns: 1;
+  fixed-height: true;
+  scrollbar: false;
+  spacing: 4px;
+}
+
+element {
+  padding: 8px 12px;
+  spacing: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+element normal.normal,
+element alternate.normal {
+  background-color: transparent;
+  text-color: @text;
+}
+
+element selected.normal {
+  background-color: @surface1;
+  text-color: @text;
+}
+
+element-icon {
+  size: 26px;
+  vertical-align: 0.5;
+  cursor: inherit;
+}
+
+element-text {
+  vertical-align: 0.5;
+  text-color: inherit;
+  cursor: inherit;
+}
+
+element-text selected {
+  text-color: @accent;
+}
+
+mode-switcher {
+  spacing: 8px;
+}
+
+button {
+  padding: 6px;
+  border-radius: 8px;
+  text-color: @subtext;
+  background-color: @mantle;
+  cursor: pointer;
+}
+
+button selected {
+  text-color: @base;
+  background-color: @accent;
+}
+
+message {
+  padding: 8px 12px;
+  border-radius: 8px;
+  background-color: @surface0;
+}
+
+textbox {
+  text-color: @subtext;
+}
