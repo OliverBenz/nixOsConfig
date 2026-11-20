@@ -45,6 +45,9 @@ in
     sddmTheme
   ];
 
+  # File manager extras: a trash folder, USB sticks in the sidebar, phones and network folders.
+  services.gvfs.enable = true;
+
   # xbacklight for the brightness keys, with udev rules so the video group may write the backlight.
   hardware.acpilight.enable = true;
 
