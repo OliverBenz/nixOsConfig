@@ -1,9 +1,22 @@
 { pkgs, ... } :
+let
+  sddmTheme = pkgs.sddm-astronaut.override {
+    themeConfig = {
+      Background = "${../../resources/wallpapers/tobu_nikko_dark.jpg}";
+      Font = "JetBrainsMono Nerd Font";
+      PartialBlur = "false";
+    };
+  };
+in
 {
   # X11 with the i3 window manager, as on the Manjaro PC. sddm stays the login screen.
   services.xserver.enable = true;
   services.xserver.windowManager.i3.enable = true;
-  services.displayManager.sddm.enable = true;
+  services.displayManager.sddm = {
+    enable = true;
+    theme = "sddm-astronaut-theme";
+    extraPackages = [ sddmTheme ];
+  };
   services.displayManager.defaultSession = "none+i3";
 
   # Configure keymap in X11
@@ -29,6 +42,7 @@
     flameshot                 # screenshots
     i3lock                    # lock screen
     xkill xrandr
+    sddmTheme
   ];
 
   # xbacklight for the brightness keys, with udev rules so the video group may write the backlight.
