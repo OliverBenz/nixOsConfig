@@ -1,4 +1,4 @@
-{ lib, pkgs, pkgs-unstable, ... }:
+{ config, lib, pkgs, pkgs-unstable, ... }:
 {
   home.username = "oliver";
   home.homeDirectory = "/home/oliver";
@@ -35,6 +35,24 @@
     ".config/onedriveUni/config".source = dotfiles/onedriveUni;
     ".config/onedrivePersonal/config".source = dotfiles/onedrivePersonal;
     ".config/onedrive-launcher".source = dotfiles/onedrive-launcher;
+  };
+
+  # Catppuccin Mocha for GTK apps (blueman, pcmanfm, file dialogs), matching kitty and Zed.
+  gtk = {
+    enable = true;
+    theme = {
+      name = "Catppuccin-GTK-Dark";
+      package = pkgs.magnetic-catppuccin-gtk;
+    };
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
+    };
+    gtk4.theme = config.gtk.theme;
+    font = {
+      name = "JetBrainsMono Nerd Font";
+      size = 10;
+    };
   };
 
   # Terminal: kitty draws the window, bash runs inside, starship draws the prompt.

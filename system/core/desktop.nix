@@ -45,6 +45,9 @@ in
     sddmTheme
   ];
 
+  # Settings store for GTK apps; home-manager's gtk module writes to it.
+  programs.dconf.enable = true;
+
   # File manager extras: a trash folder, USB sticks in the sidebar, phones and network folders.
   services.gvfs.enable = true;
 

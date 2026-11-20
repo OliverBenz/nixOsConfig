@@ -8,4 +8,7 @@
 	  Experimental = true;
     };
   };
+
+  # Tray icon (blueman-applet, started by i3) and device manager.
+  services.blueman.enable = true;
 }
