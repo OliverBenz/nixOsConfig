@@ -3,8 +3,7 @@
 #   nordvpn login --token <token>
 #   nordvpn set technology nordlynx
 #   nordvpn set autoconnect on
-#   nordvpn set killswitch off                  # on blocks Tailscale's traffic to public IPs
-#   nordvpn allowlist add subnet 100.64.0.0/10  # Tailscale range, keeps the tailnet off the tunnel
+#   nordvpn set firewall off   # its rules (kill switch included) drop Tailscale's traffic, which bypasses the tunnel
 { inputs, pkgs-unstable, ... }:
 let
   module = import "${inputs.nixpkgs-unstable}/nixos/modules/services/networking/nordvpn.nix";
